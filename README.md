@@ -1,5 +1,5 @@
 # AudioDeepfake
- Finetuning a FastPitch and HifiGan model on a Tom cruise Dataset.
+ Finetuning a FastPitch and HifiGan model on a Tom cruise Dataset I made from [this interview](https://www.youtube.com/watch?v=P_1TZ4gYA2s) .
 
 ### Getting started.
 

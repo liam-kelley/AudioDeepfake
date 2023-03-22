@@ -29,7 +29,8 @@ The Dataset has 376 Tom Cruise Samples. Total length is a little over 20 minutes
 3. Export audios as mono 16bit wavs.
 4. Resampled audio as 22050Hz from 44100Hz using MakingDatsets/resample_audio.py
 5. Transcribed all sample's texts using OpenAI's Whisper Api on Colab (MakingDatasets/CruiseSetWhisper.ipnyb), exported and downloaded a first version of a cruise manifest.json file (with durations!) that way.
-6. Additionnal manifest.json editing using good ol' notepad cntrl-H search & replace (specifically chose cool lines for validation)
+6. Manually corrected every error from the 376 transcriptions.
+7. Additionnal manifest.json editing using good ol' notepad cntrl-H search & replace (specifically chose cool lines for validation)
 
 ##### Combining the CruiseSet with LJSpeech for FastPitch Training
 

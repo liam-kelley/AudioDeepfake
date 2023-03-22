@@ -3,6 +3,8 @@ import soundfile as sf
 from nemo.collections.tts.models import HifiGanModel
 from nemo.collections.tts.models import FastPitchModel
 
+hifigan_from_pretrained=True
+
 def infer(spec_gen_model, vocoder_model, str_input, speaker=None):
     """
     Synthesizes spectrogram and audio from a text string given a spectrogram synthesis and vocoder model.
@@ -32,7 +34,8 @@ def infer(spec_gen_model, vocoder_model, str_input, speaker=None):
         audio = audio.to('cpu').numpy()
     return spectrogram, audio
 
-vocoder = HifiGanModel.from_pretrained("tts_hifigan")
+if hifigan_from_pretrained :
+    vocoder = HifiGanModel.from_pretrained("tts_hifigan")
 vocoder = vocoder.eval().cuda()
 
 ckpt = "cruisetuningv2/FastPitch/2023-03-20_21-48-53/checkpoints/FastPitch--val_loss=1.3965-epoch=130-last.ckpt"

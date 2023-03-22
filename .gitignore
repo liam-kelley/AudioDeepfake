@@ -3,3 +3,8 @@ LJSpeech-1.1_small/
 init_nemo_models/
 #cruise_audios_22k.zip
 #LJSpeech-1.1_small.zip
+fastpitch_sup_data/
+exp/
+*.ini
+
+was_ipnyb_tutorial.py

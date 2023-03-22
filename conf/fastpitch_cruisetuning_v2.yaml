@@ -1,10 +1,8 @@
-# This config contains the default values for training FastPitch model with aligner on LJSpeech dataset.
-# If you want to train model on other dataset, you can change config values according to your dataset.
-# Most dataset-specific arguments are in the head of the config file, see below.
+# This config file is the an edited version of the default fastpitch cfg file for use with M. cruise.
 
 name: FastPitch
 
-init_from_nemo_model : "./tts_en_fastpitch_align.nemo"
+init_from_pretrained_model : "tts_en_fastpitch"
 
 train_dataset: "./manifests/manifest_train_mult_speakers.json"
 validation_datasets: "./manifests/manifest_val.json"
@@ -17,8 +15,8 @@ pitch_fmax: 2093.004522404789
 
 # these frame-wise values depend on pitch_fmin and pitch_fmax, you can get values
 # by running `scripts/dataset_processing/tts/extract_sup_data.py`
-pitch_mean: ???  # e.g. 212.35873413085938 for LJSpeech
-pitch_std:  ???  # e.g.  68.52806091308594 for LJSpeech
+pitch_mean: 100.3  # e.g. 212.35873413085938 for LJSpeech
+pitch_std:  64  # e.g.  68.52806091308594 for LJSpeech
 
 # Default values for dataset with sample_rate=22050
 sample_rate: 22050
@@ -76,6 +74,7 @@ model:
     chars: true
     apostrophe: true
     pad_with_space: true
+    add_blank_at : true
     g2p:
       _target_: nemo_text_processing.g2p.modules.EnglishG2p
       phoneme_dict: ${phoneme_dict_path}
@@ -110,7 +109,7 @@ model:
     dataloader_params:
       drop_last: false
       shuffle: true
-      batch_size: 32
+      batch_size: 24
       num_workers: 12
       pin_memory: true
 
@@ -142,7 +141,7 @@ model:
     dataloader_params:
       drop_last: false
       shuffle: false
-      batch_size: 32
+      batch_size: 24
       num_workers: 8
       pin_memory: true
 
@@ -215,22 +214,16 @@ model:
     n_layers: 2
 
   optim:
-    name: adamw
-    lr: 1e-3
+    name: adam
+    lr: 2e-4
     betas: [0.9, 0.999]
     weight_decay: 1e-6
-
-    sched:
-      name: NoamAnnealing
-      warmup_steps: 1000
-      last_epoch: -1
-      d_model: 1  # Disable scaling based on model dim
 
 trainer:
   num_nodes: 1
   devices: 1
   accelerator: gpu
-  strategy: ddp
+  strategy: null
   precision: 16
   max_steps : 600000
   accumulate_grad_batches: 1
@@ -242,7 +235,7 @@ trainer:
   benchmark: false
 
 exp_manager:
-  exp_dir: "./cruisetuningv2"
+  exp_dir: "./exp/fastpitch_cruisetuningv2"
   name: ${name}
   create_tensorboard_logger: true
   create_checkpoint_callback: true

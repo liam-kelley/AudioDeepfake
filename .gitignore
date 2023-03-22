@@ -1,5 +1,5 @@
 cruise_audios_22k/
 LJSpeech-1.1_small/
-init_nemo_models/
-cruise_audios_22k.zip
-LJSpeech-1.1_small.zip
+#init_nemo_models/
+#cruise_audios_22k.zip
+#LJSpeech-1.1_small.zip

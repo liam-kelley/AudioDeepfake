@@ -35,5 +35,5 @@ The Dataset has 376 Tom Cruise Samples. Total length is a little over 20 minutes
 ##### Combining the CruiseSet with LJSpeech for FastPitch Training
 
 1. Modified Torchaudio's ljspeech.py file to better fit this project's manifest creating needs --> ljspeech_loader.py
-2. Selected about 5h of audio from LJSpeech.
+2. Selected about 5h of audio from LJSpeech1.1 to create my LJSpeech1.1_small.
 3. Created a combined+alternating manifest_train_mult_speakers.json file using load_ljspeech_and_combine_manifests.json.

@@ -1,5 +1,6 @@
 # AudioDeepfake
- Finetuning a FastPitch and HifiGan model on a Tom Cruise Dataset I made from [this interview](https://www.youtube.com/watch?v=P_1TZ4gYA2s) .
+Finetuning a FastPitch and HifiGan model on a Tom Cruise Dataset I made from [this interview](https://www.youtube.com/watch?v=P_1TZ4gYA2s).
+This repo reworks [NVidia's fastpitch finetuning tutorial](https://github.com/NVIDIA/NeMo/blob/main/tutorials/tts/FastPitch_Finetuning.ipynb)
 
 ### Getting started with this repo
 

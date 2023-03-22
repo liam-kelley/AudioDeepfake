@@ -19,7 +19,7 @@ The following is to finetune the vocoder, and isn't tested yet.
 
 ### The dataset
 
-Here is info on how I made the dataset.
+The Dataset has 376 Tom Cruise Samples. Total length is a little over 20 minutes. The data is transcribed in the manifests folder. Here is info on how I made the dataset:
 
 ##### The CruiseSet
 

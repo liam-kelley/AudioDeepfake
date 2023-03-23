@@ -12,7 +12,8 @@ texts_to_say= ["My name is tom cruise. How are you? I was born in a small town. 
     "Blow a golf ball sized hole through the first man, he's dead on the spot. Draw my pistol on the second man, miss him entirely because it's smoothbore and nails the neighbors dog.",
     "I have to resort to the cannon mounted at the top of the stairs loaded with grape shot. Tally ho lads. the grape shot shreds two men in the blast, the sound and extra shrapnel set off car alarms."
     "Fix bayonet and charge the last terrified rapscallion. He Bleeds out waiting on the police to arrive since triangular bayonet wounds are impossible to stitch up. Just as the founding fathers intended."]
-outfilename="inferred_audios/fastpitch_only_on_multspeaker_trainset/speech"
+
+outfilename="inferred_audios/fastpitch_only_on_multspeaker_trainset_last_ckpt/speech"
 
 def infer(spec_gen_model, vocoder_model, str_input, speaker=None):
     """
@@ -71,11 +72,14 @@ def get_ckpt_from_last_run( base_dir="exp", \
         min_index = dico["val_loss"].index(min_value)
         return str(dico["ckpts"][min_index])
 
-#ckpt = "exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.1873-epoch=9.ckpt"
+#######################
+###   LOAD MODELS   ###
+#######################
+
 if fastpitch_from_pretrained :
     spec_model = FastPitchModel.from_pretrained("tts_en_fastpitch")
 else:
-    ckpt=get_ckpt_from_last_run(exp_manager="fastpitch_cruisetuningv2", model_name="FastPitch",get="best")
+    ckpt=get_ckpt_from_last_run(exp_manager="fastpitch_cruisetuningv2", model_name="FastPitch",get="last")
     spec_model = FastPitchModel.load_from_checkpoint(ckpt)
     print("FastPitch checkpoint loaded: ", ckpt)
 spec_model.eval().cuda()
@@ -87,6 +91,10 @@ else:
     vocoder = HifiGanModel.load_from_checkpoint(ckpt)
     print("HifiGan checkpoint loaded: ", ckpt)
 vocoder = vocoder.eval().cuda()
+
+#######################
+###    INFERENCE    ###
+#######################
 
 for i,text in enumerate(texts_to_say):
     spec, audio = infer(spec_model, vocoder, text, speaker=1)

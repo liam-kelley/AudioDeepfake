@@ -16,6 +16,7 @@ def get_manifest(manifest_path):
     with open(manifest_path, "r") as f:
         for i, line in enumerate(f):
             manifest.append(json.loads(line))
+    return manifest
 
 def load_wav(audio_file, target_sr=None):
     with sf.SoundFile(audio_file, 'r') as f:
@@ -85,14 +86,17 @@ save_dir.mkdir(exist_ok=True, parents=True)
 
 manifest_train_cruise = get_manifest(manifest_path = Path("./manifests/manifest_train_cruise_only.json"))
 manifest_train_hifigan = gen_mels_and_new_manifest_from_manifest(manifest_train_cruise, spec_model, beta_binomial_interpolator, save_dir)
+print("generated train mel spectrograms")
 hifigan_manifest_path = Path("./manifests/manifest_hifigan_train.json")
 write_new_manifest(manifest_train_hifigan,hifigan_manifest_path)
+print("wrote hifigan train manifest")
 
 manifest_val = get_manifest(manifest_path = Path("./manifests/manifest_val.json"))
 manifest_val_hifigan = gen_mels_and_new_manifest_from_manifest(manifest_val, spec_model, beta_binomial_interpolator, save_dir)
+print("generated val mel spectrograms")
 hifigan_manifest_path = Path("./manifests/manifest_hifigan_val.json")
 write_new_manifest(manifest_val_hifigan,hifigan_manifest_path)
-
+print("wrote hifigan val manifest")
 
 
 

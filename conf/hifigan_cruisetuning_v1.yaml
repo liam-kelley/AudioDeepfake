@@ -5,8 +5,8 @@ name: "HifiGan"
 
 init_from_pretrained_model : "tts_hifigan"
 
-train_dataset: "./manifests/manifest_train_cruise_only.json"
-validation_datasets: "./manifests/manifest_val.json"
+train_dataset: "./manifests/manifest_hifigan_train.json"
+validation_datasets: "./manifests/manifest_hifigan_val.json"
 
 sup_data_path: "./hifigan_sup_data"
 sup_data_types: [ "align_prior_matrix", "pitch"]

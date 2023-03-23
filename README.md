@@ -20,7 +20,7 @@ python -m pip install pynini=2.1.4
 ```
 
 4. python fastpitch_cruisetuning.py
-5. python infer_some_cruise_audio.py (make sure to update the path to the ckpt you want to use.)
+5. python infer_some_cruise_audio.py
 6. read your audio sample yeahh
 
 The following is to finetune the vocoder, and isn't tested yet.

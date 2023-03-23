@@ -12,12 +12,12 @@ This repo reworks [NVidia's fastpitch finetuning tutorial](https://github.com/NV
 3. install depedencies for cruisetuning (use a venv or something) (see install_dependencies_for_cruisetuning.py)
 
 Dependencies:
-'''
+```
 apt-get update && apt-get install -y libsndfile1 ffmpeg
 python -m pip install Cython
 python -m pip install nemo_toolkit[all]
 python -m pip install pynini=2.1.4
-'''
+```
 
 4. python fastpitch_cruisetuning.py
 5. python infer_some_cruise_audio.py

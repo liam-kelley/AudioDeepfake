@@ -36,118 +36,52 @@ val_n_segments: 66048
 val_max_duration: null
 val_min_duration: 3
 
-defaults:
-      - model/generator: v1
-#    #  - model/train_ds: train_ds_finetune
-#    #  - model/validation_ds: val_ds_finetune
-
 phoneme_dict_path: "tts_dataset_files/cmudict-0.7b_nv22.10"
 heteronyms_path: "tts_dataset_files/heteronyms-052722"
 whitelist_path: "tts_dataset_files/tts.tsv"
 
 model:
-
-  pitch_fmin: ${pitch_fmin}
-  pitch_fmax: ${pitch_fmax}
-  pitch_mean: ${pitch_mean}
-  pitch_std: ${pitch_std}
-
-  sample_rate: ${sample_rate}
-  n_mel_channels: ${n_mel_channels}
-  n_window_size: ${n_window_size}
-  n_window_stride: ${n_window_stride}
-  n_fft: ${n_fft}
-  lowfreq: ${lowfreq}
-  highfreq: ${highfreq}
-  window: ${window}
-
-  # text_normalizer:
-  #   _target_: nemo_text_processing.text_normalization.normalize.Normalizer
-  #   lang: en
-  #   input_case: cased
-  #   whitelist: ${whitelist_path}
-
-  # text_normalizer_call_kwargs:
-  #   verbose: false
-  #   punct_pre_process: true
-  #   punct_post_process: true
-
-  # text_tokenizer:
-  #   _target_: nemo.collections.common.tokenizers.text_to_speech.tts_tokenizers.EnglishPhonemesTokenizer
-  #   punct: true
-  #   stresses: true
-  #   chars: true
-  #   apostrophe: true
-  #   pad_with_space: true
-  #   add_blank_at : true
-  #   g2p:
-  #     _target_: nemo_text_processing.g2p.modules.EnglishG2p
-  #     phoneme_dict: ${phoneme_dict_path}
-  #     heteronyms: ${heteronyms_path}
-  #     phoneme_probability: 0.5
+  generator: 
+    _target_: nemo.collections.tts.modules.hifigan_modules.Generator
+    resblock: 1
+    upsample_rates: [8,8,2,2]
+    upsample_kernel_sizes: [16,16,4,4]
+    upsample_initial_channel: 512
+    resblock_kernel_sizes: [3,7,11]
+    resblock_dilation_sizes: [[1,3,5], [1,3,5], [1,3,5]]
 
   train_ds:
     dataset:
-      _target_: nemo.collections.tts.torch.data.TTSDataset
+      _target_: "nemo.collections.tts.torch.data.VocoderDataset"
       manifest_filepath: ${train_dataset}
-      sample_rate: ${model.sample_rate}
-      sup_data_path: ${sup_data_path}
-      sup_data_types: ${sup_data_types}
-      n_fft: ${model.n_fft}
-      win_length: ${model.n_window_size}
-      hop_length: ${model.n_window_stride}
-      window: ${model.window}
-      n_mels: ${model.n_mel_channels}
-      lowfreq: ${model.lowfreq}
-      highfreq: ${model.highfreq}
-      max_duration: null
-      min_duration: 0.1
-      ignore_file: null
-      trim: false
-      pitch_fmin: ${model.pitch_fmin}
-      pitch_fmax: ${model.pitch_fmax}
-      pitch_norm: true
-      pitch_mean: ${model.pitch_mean}
-      pitch_std: ${model.pitch_std}
-      use_beta_binomial_interpolator: true
-
+      sample_rate: ${sample_rate}
+      n_segments: ${train_n_segments}
+      max_duration: ${train_max_duration}
+      min_duration: ${train_min_duration}
+      load_precomputed_mel: true
+      hop_length: ${n_window_stride}
     dataloader_params:
       drop_last: false
       shuffle: true
-      batch_size: 24
-      num_workers: 8
+      batch_size: 16
+      num_workers: 4
       pin_memory: true
   
   validation_ds:
     dataset:
-      _target_: nemo.collections.tts.torch.data.TTSDataset
+      _target_: "nemo.collections.tts.torch.data.VocoderDataset"
       manifest_filepath: ${validation_datasets}
-      sample_rate: ${model.sample_rate}
-      sup_data_path: ${sup_data_path}
-      sup_data_types: ${sup_data_types}
-      n_fft: ${model.n_fft}
-      win_length: ${model.n_window_size}
-      hop_length: ${model.n_window_stride}
-      window: ${model.window}
-      n_mels: ${model.n_mel_channels}
-      lowfreq: ${model.lowfreq}
-      highfreq: ${model.highfreq}
-      max_duration: null
-      min_duration: null
-      ignore_file: null
-      trim: false
-      pitch_fmin: ${model.pitch_fmin}
-      pitch_fmax: ${model.pitch_fmax}
-      pitch_norm: true
-      pitch_mean: ${model.pitch_mean}
-      pitch_std: ${model.pitch_std}
-      use_beta_binomial_interpolator: true
-
+      sample_rate: ${sample_rate}
+      n_segments: ${val_n_segments}
+      max_duration: ${val_max_duration}
+      min_duration: ${val_min_duration}
+      load_precomputed_mel: true
+      hop_length: ${n_window_stride}
     dataloader_params:
       drop_last: false
       shuffle: false
-      batch_size: 24
-      num_workers: 8
+      batch_size: 16
+      num_workers: 4
       pin_memory: true
 
   preprocessor:
@@ -187,7 +121,7 @@ trainer:
   devices: 1
   accelerator: gpu
   strategy: ddp
-  precision: 32
+  precision: "16-mixed"
   max_steps: ${model.max_steps}
   accumulate_grad_batches: 1
   enable_checkpointing: False  # Provided by exp_manager

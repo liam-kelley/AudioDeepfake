@@ -15,8 +15,8 @@ texts_to_say= ["My name is tom cruise. How are you? I was born in a small town. 
     "I have to resort to the cannon mounted at the top of the stairs loaded with grape shot. Tally ho lads! The grape shot shreds two men in the blast. The sound and extra shrapnel set off car alarms."
     "I affix my bayonet and charge the last terrified rapscallion. He bleeds out waiting on the police to arrive since triangular bayonet wounds are impossible to stitch up. Just as the founding fathers intended."]
 
-outfilename=Path("inferred_audios/cruisefake_v1_hifigan_last_ckpt/speech")
-outfilename.mkdir(exist_ok=True, parents=True)
+outfilepath=Path("inferred_audios/cruisefake_v1_hifigan_last_ckpt")
+outfilepath.mkdir(exist_ok=True, parents=True)
 
 def infer(spec_gen_model, vocoder_model, str_input, speaker=None):
     """
@@ -74,5 +74,5 @@ vocoder = vocoder.eval().cuda()
 for i,text in enumerate(texts_to_say):
     spec, audio = infer(spec_model, vocoder, text, speaker=1)
     # Save the audio to disk in a file called speech.wav
-    sf.write(outfilename + str(i) + ".wav", audio[0], 22050)
-    print("Audio ", outfilename + str(i) + ".wav", " inferred and written.")
+    sf.write(outfilepath / Path("speech" + str(i) + ".wav"), audio[0], 22050)
+    print("Audio ", "speech" + str(i) + ".wav", " inferred and written.")

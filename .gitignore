@@ -9,3 +9,6 @@ exp/
 
 was_ipnyb_tutorial.py
 =0.10.0
+!exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.1875-epoch=34.ckpt
+!exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.1873-epoch=9.ckpt
+!exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.3521-epoch=234-last.ckpt

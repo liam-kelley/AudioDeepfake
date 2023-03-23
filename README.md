@@ -9,7 +9,7 @@ This repo reworks [NVidia's fastpitch finetuning tutorial](https://github.com/NV
 2. gdown https://drive.google.com/uc?id=18ykFRnpZo2hJePK_Gm_DF5CznhVxAIqV (download LJSpeech1.1_small.zip)
 3. gdown https://drive.google.com/uc?id=1ZnfsLTxSo_DVuqMOEjyCpBGP3UHMBEn8 (download cruise_audio_22k.zip)
 2. Unzip files cruise_audios_22k.zip and LJSpeech-1.1_small.zip
-3. install depedencies for cruisetuning (use a venv or something) (see install_dependencies_for_cruisetuning.py)
+3. install depedencies (use a venv or something)
 
 Dependencies:
 ```

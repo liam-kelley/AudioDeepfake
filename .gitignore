@@ -5,7 +5,7 @@ cruise_audios_22k.zip
 LJSpeech-1.1_small.zip
 fastpitch_sup_data/
 #exp/
-exp/hifigan_cruisetuningv1/
+exp/hifigan_cruisetuningv1
 *.ini
 
 

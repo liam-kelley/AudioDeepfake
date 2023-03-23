@@ -41,6 +41,10 @@ val_min_duration: 3
 #    #  - model/train_ds: train_ds_finetune
 #    #  - model/validation_ds: val_ds_finetune
 
+phoneme_dict_path: "tts_dataset_files/cmudict-0.7b_nv22.10"
+heteronyms_path: "tts_dataset_files/heteronyms-052722"
+whitelist_path: "tts_dataset_files/tts.tsv"
+
 model:
 
   pitch_fmin: ${pitch_fmin}
@@ -56,6 +60,31 @@ model:
   lowfreq: ${lowfreq}
   highfreq: ${highfreq}
   window: ${window}
+
+  text_normalizer:
+    _target_: nemo_text_processing.text_normalization.normalize.Normalizer
+    lang: en
+    input_case: cased
+    whitelist: ${whitelist_path}
+
+  text_normalizer_call_kwargs:
+    verbose: false
+    punct_pre_process: true
+    punct_post_process: true
+
+  text_tokenizer:
+    _target_: nemo.collections.common.tokenizers.text_to_speech.tts_tokenizers.EnglishPhonemesTokenizer
+    punct: true
+    stresses: true
+    chars: true
+    apostrophe: true
+    pad_with_space: true
+    add_blank_at : true
+    g2p:
+      _target_: nemo_text_processing.g2p.modules.EnglishG2p
+      phoneme_dict: ${phoneme_dict_path}
+      heteronyms: ${heteronyms_path}
+      phoneme_probability: 0.5
 
   train_ds:
     dataset:

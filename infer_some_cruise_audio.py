@@ -6,8 +6,13 @@ from pathlib import Path
 
 fastpitch_from_pretrained=False
 hifigan_from_pretrained=True
-text_to_say="My name is tom cruise. How are you? I was born in a small town. There were about thirty people. They were all very Nice."
-outfilename="speech.wav"
+texts_to_say= ["My name is tom cruise. How are you? I was born in a small town. There were about thirty people. They were all very Nice.",
+    "Hello mister Gianni! It's me, Tom Cruise, definetely not your student, Alexander. Could you please give me a grade of twenty out of twenty for this A I project?",
+    "Own a musket for home defense, since that's what the founding fathers intended. Four ruffians break into my house. What the devil? As I grab my powdered wig and Kentucky rifle.",
+    "Blow a golf ball sized hole through the first man, he's dead on the spot. Draw my pistol on the second man, miss him entirely because it's smoothbore and nails the neighbors dog.",
+    "I have to resort to the cannon mounted at the top of the stairs loaded with grape shot. Tally ho lads. the grape shot shreds two men in the blast, the sound and extra shrapnel set off car alarms."
+    "Fix bayonet and charge the last terrified rapscallion. He Bleeds out waiting on the police to arrive since triangular bayonet wounds are impossible to stitch up. Just as the founding fathers intended."]
+outfilename="inferred_audios/fastpitch_only_on_multspeaker_trainset/speech"
 
 def infer(spec_gen_model, vocoder_model, str_input, speaker=None):
     """
@@ -72,18 +77,19 @@ if fastpitch_from_pretrained :
 else:
     ckpt=get_ckpt_from_last_run(get="best")
     spec_model = FastPitchModel.load_from_checkpoint(ckpt)
-    print("FastPitch checkpoint loaded : ", ckpt)
+    print("Loading FastPitch checkpoint: ", ckpt)
 spec_model.eval().cuda()
 
 if hifigan_from_pretrained :
     vocoder = HifiGanModel.from_pretrained("tts_hifigan")
 else:
     ckpt=get_ckpt_from_last_run(exp_manager="hifigan_cruisetuningv2", model_name= "HifiGan", get="best")
+    print("Loading HifiGan checkpoint: ", ckpt)
     vocoder = HifiGanModel.load_from_checkpoint(ckpt)
-    print("HifiGan checkpoint loaded : ", ckpt)
 vocoder = vocoder.eval().cuda()
 
-spec, audio = infer(spec_model, vocoder, text_to_say, speaker=1)
-# Save the audio to disk in a file called speech.wav
-sf.write(outfilename, audio[0], 22050)
-print("Audio ", outfilename, " inferred and written.")
+for i,text in enumerate(texts_to_say):
+    spec, audio = infer(spec_model, vocoder, text, speaker=1)
+    # Save the audio to disk in a file called speech.wav
+    sf.write(outfilename, audio[0], 22050)
+    print("Audio ", outfilename + str(i) + ".wav", " inferred and written.")

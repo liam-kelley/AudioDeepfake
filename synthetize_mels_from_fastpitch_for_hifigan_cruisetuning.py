@@ -1,10 +1,15 @@
+import os
 import json
 import numpy as np
 import torch
 import soundfile as sf
 import string
 from pathlib import Path
+from nemo.collections.tts.models import FastPitchModel
 from nemo.collections.tts.torch.helpers import BetaBinomialInterpolator
+import librosa
+
+from get_ckpt import get_ckpt_from_last_run
 
 def get_manifest(manifest_path):
     manifest = []
@@ -70,9 +75,9 @@ def write_new_manifest(manifest,manifest_path):
 
 beta_binomial_interpolator = BetaBinomialInterpolator()
 
-#ckpt = "cruisetuningv2/FastPitch/2023-03-20_21-48-53/checkpoints/FastPitch--val_loss=1.3965-epoch=130-last.ckpt"
-#spec_model = FastPitchModel.load_from_checkpoint(ckpt)
-spec_model = FastPitchModel.from_pretrained("tts_en_fastpitch")
+ckpt=get_ckpt_from_last_run(exp_manager="fastpitch_cruisetuningv2", model_name="FastPitch",get="last")
+spec_model = FastPitchModel.load_from_checkpoint(ckpt)
+print("FastPitch checkpoint loaded: ", ckpt)
 spec_model.eval()
 
 save_dir = Path("./cruise_mels")

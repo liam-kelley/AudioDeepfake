@@ -4,13 +4,15 @@ from nemo.collections.tts.models import HifiGanModel
 from nemo.collections.tts.models import FastPitchModel
 from pathlib import Path
 
+from get_ckpt import get_ckpt_from_last_run
+
 fastpitch_from_pretrained=False
 hifigan_from_pretrained=True
 texts_to_say= ["My name is tom cruise. How are you? I was born in a small town. There were about thirty people. They were all very Nice.",
-    "Hello mister Gianni! It's me, Tom Cruise, definetely not your student, Alexander. Could you please give me a grade of twenty out of twenty for this A I project?",
+    "Hello mister Gianni! It's me, Tom Cruise, definetely not your student, Alexander. Could you please give me a grade of twenty out of twenty for this artificial intelligence project?",
     "Own a musket for home defense, since that's what the founding fathers intended. Four ruffians break into my house. What the devil? As I grab my powdered wig and Kentucky rifle.",
-    "Blow a golf ball sized hole through the first man, he's dead on the spot. Draw my pistol on the second man, miss him entirely because it's smoothbore and nails the neighbors dog.",
-    "I have to resort to the cannon mounted at the top of the stairs loaded with grape shot. Tally ho lads. the grape shot shreds two men in the blast, the sound and extra shrapnel set off car alarms."
+    "Blow a golf ball sized hole through the first man, he's dead on the spot. Draw my pistol on the second man, miss him entirely because it's an old ass gun and I nail the neighbors dog.",
+    "I have to resort to the cannon mounted at the top of the stairs loaded with grape shot. Tally ho lads! the grape shot shreds two men in the blast. The sound and extra shrapnel set off car alarms."
     "Fix bayonet and charge the last terrified rapscallion. He Bleeds out waiting on the police to arrive since triangular bayonet wounds are impossible to stitch up. Just as the founding fathers intended."]
 
 outfilename="inferred_audios/fastpitch_only_on_multspeaker_trainset_last_ckpt/speech"
@@ -43,34 +45,6 @@ def infer(spec_gen_model, vocoder_model, str_input, speaker=None):
     if isinstance(audio, torch.Tensor):
         audio = audio.to('cpu').numpy()
     return spectrogram, audio
-
-def is_digit(letter):
-    return letter.isdigit()
-
-def get_ckpt_from_last_run( base_dir="exp", \
-        exp_manager="fastpitch_cruisetuningv2", \
-        model_name="FastPitch" , get="last"): #can also get best
-
-    exp_dirs = list([i for i in (Path(base_dir) / exp_manager / model_name).iterdir() if i.is_dir()])
-    last_exp_dir = sorted(exp_dirs)[-1]
-    last_checkpoint_dir = last_exp_dir / "checkpoints"
-    
-    if get=="last":
-        last_ckpt = list(last_checkpoint_dir.glob('*-last.ckpt'))
-        if len(last_ckpt) == 0:
-            raise ValueError(f"There is no last checkpoint in {last_checkpoint_dir}.")
-        return str(last_ckpt[0])
-    
-    if get=="best":
-        dico={"ckpts": list(last_checkpoint_dir.glob('*.ckpt')), "val_loss": []}
-        for ckpt in dico["ckpts"]:
-            string_after_val_loss=str(ckpt).split("val_loss=",1)[1]
-            # val_loss=int(str(filter(is_digit, string_after_val_loss[:6])))
-            val_loss=float(string_after_val_loss[:6])
-            dico["val_loss"].append(val_loss)
-        min_value=min(dico["val_loss"])
-        min_index = dico["val_loss"].index(min_value)
-        return str(dico["ckpts"][min_index])
 
 #######################
 ###   LOAD MODELS   ###

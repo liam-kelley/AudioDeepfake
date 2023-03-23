@@ -4,18 +4,21 @@ This repo reworks [NVidia's fastpitch finetuning tutorial](https://github.com/NV
 
 ### Getting started with this repo
 
-0. Clone repo
-1. Unzip files cruise_audios_22k.zip and LJSpeech-1.1_small.zip
-2. install depedencies for cruisetuning (use a venv or something) 
-3. python fastpitch_cruisetuning.py
-4. python infer_some_cruise_audio.py
-5. read your audio sample yeahh
+0. Clone repo, mv into it
+1. pip install gdown
+2. gdown https://drive.google.com/uc?id=18ykFRnpZo2hJePK_Gm_DF5CznhVxAIqV (download LJSpeech1.1_small.zip)
+3. gdown https://drive.google.com/uc?id=1ZnfsLTxSo_DVuqMOEjyCpBGP3UHMBEn8 (download cruise_audio_22k.zip)
+2. Unzip files cruise_audios_22k.zip and LJSpeech-1.1_small.zip
+3. install depedencies for cruisetuning (use a venv or something) (see install_dependencies_for_cruisetuning.py)
+4. python fastpitch_cruisetuning.py
+5. python infer_some_cruise_audio.py
+6. read your audio sample yeahh
 
 The following is to finetune the vocoder, and isn't tested yet.
 
-6. python synthetize_mels_from_fastpitch_for_hifigan_cruisetuning.py (probably need to debug that code)
-7. python hifigan_cruisetuning.py
-8. modify infer_some_cruise_audio.py to load hifigan from checkpoint.
+7. python synthetize_mels_from_fastpitch_for_hifigan_cruisetuning.py (probably need to debug that code)
+8. python hifigan_cruisetuning.py
+9. modify infer_some_cruise_audio.py to load hifigan from checkpoint.
 
 ### The dataset
 

@@ -5,7 +5,9 @@ cruise_audios_22k.zip
 LJSpeech-1.1_small.zip
 fastpitch_sup_data/
 #exp/
+exp/hifigan_cruisetuningv1/
 *.ini
+
 
 was_ipnyb_tutorial.py
 =0.10.0

@@ -36,10 +36,10 @@ val_n_segments: 66048
 val_max_duration: null
 val_min_duration: 3
 
-defaults:
-  - model/generator: v1
-  - model/train_ds: train_ds_finetune
-  - model/validation_ds: val_ds_finetune
+#defaults:
+#        #  - model/generator: v1
+#    #  - model/train_ds: train_ds_finetune
+#    #  - model/validation_ds: val_ds_finetune
 
 model:
 
@@ -89,7 +89,7 @@ model:
       num_workers: 8
       pin_memory: true
   
-    validation_ds:
+  validation_ds:
     dataset:
       _target_: nemo.collections.tts.torch.data.TTSDataset
       manifest_filepath: ${validation_datasets}

@@ -75,21 +75,21 @@ def get_ckpt_from_last_run( base_dir="exp", \
 if fastpitch_from_pretrained :
     spec_model = FastPitchModel.from_pretrained("tts_en_fastpitch")
 else:
-    ckpt=get_ckpt_from_last_run(get="best")
+    ckpt=get_ckpt_from_last_run(exp_manager="fastpitch_cruisetuningv2", model_name="FastPitch",get="best")
     spec_model = FastPitchModel.load_from_checkpoint(ckpt)
-    print("Loading FastPitch checkpoint: ", ckpt)
+    print("FastPitch checkpoint loaded: ", ckpt)
 spec_model.eval().cuda()
 
 if hifigan_from_pretrained :
     vocoder = HifiGanModel.from_pretrained("tts_hifigan")
 else:
-    ckpt=get_ckpt_from_last_run(exp_manager="hifigan_cruisetuningv2", model_name= "HifiGan", get="best")
-    print("Loading HifiGan checkpoint: ", ckpt)
+    ckpt=get_ckpt_from_last_run(exp_manager="hifigan_cruisetuningv1", model_name= "HifiGan", get="best")
     vocoder = HifiGanModel.load_from_checkpoint(ckpt)
+    print("HifiGan checkpoint loaded: ", ckpt)
 vocoder = vocoder.eval().cuda()
 
 for i,text in enumerate(texts_to_say):
     spec, audio = infer(spec_model, vocoder, text, speaker=1)
     # Save the audio to disk in a file called speech.wav
-    sf.write(outfilename, audio[0], 22050)
+    sf.write(outfilename + str(i) + ".wav", audio[0], 22050)
     print("Audio ", outfilename + str(i) + ".wav", " inferred and written.")

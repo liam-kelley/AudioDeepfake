@@ -1,0 +1,23 @@
+commit hash: cf318a23185916b64ee091bb3a3ec69eec1ac9b0
+diff --git a/conf/fastpitch_cruisetuning_v2.yaml b/conf/fastpitch_cruisetuning_v2.yaml
+index 131c7b1..312dc94 100644
+--- a/conf/fastpitch_cruisetuning_v2.yaml
++++ b/conf/fastpitch_cruisetuning_v2.yaml
+@@ -110,7 +110,7 @@ model:
+       drop_last: false
+       shuffle: true
+       batch_size: 24
+-      num_workers: 12
++      num_workers: 8 
+       pin_memory: true
+ 
+   validation_ds:
+@@ -231,7 +231,7 @@ trainer:
+   enable_checkpointing: False # Provided by exp_manager
+   logger: false # Provided by exp_manager
+   log_every_n_steps: 100
+-  check_val_every_n_epoch: 25
++  check_val_every_n_epoch: 5
+   benchmark: false
+ 
+ exp_manager:

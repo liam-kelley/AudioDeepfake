@@ -1,0 +1,83 @@
+[NeMo W 2023-03-23 02:40:48 optimizers:55] Apex was not found. Using the lamb or fused_adam optimizer will error out.
+[NeMo W 2023-03-23 02:40:49 experimental:28] Module <class 'nemo.collections.common.tokenizers.text_to_speech.tts_tokenizers.IPATokenizer'> is experimental, not ready for production and is not fully supported. Use at your own risk.
+[NeMo W 2023-03-23 02:40:49 experimental:28] Module <class 'nemo.collections.tts.models.radtts.RadTTSModel'> is experimental, not ready for production and is not fully supported. Use at your own risk.
+[NeMo W 2023-03-23 02:40:49 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/hydra/_internal/hydra.py:127: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+    See https://hydra.cc/docs/next/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+      configure_logging=with_log_configuration,
+    
+[NeMo W 2023-03-23 02:40:51 exp_manager:989] The checkpoint callback was told to monitor a validation value and trainer's max_steps was set to 600000. Please ensure that max_steps will run for at least 5 epochs to ensure that checkpointing will not error out.
+[NeMo W 2023-03-23 02:41:25 experimental:28] Module <class 'nemo_text_processing.g2p.modules.IPAG2P'> is experimental, not ready for production and is not fully supported. Use at your own risk.
+[NeMo W 2023-03-23 02:41:26 modules:96] apply_to_oov_word=None, This means that some of words will remain unchanged if they are not handled by any of the rules in self.parse_one_word(). This may be intended if phonemes and chars are both valid inputs, otherwise, you may see unexpected deletions in your input.
+[NeMo W 2023-03-23 02:41:27 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/torch/jit/annotations.py:309: UserWarning: TorchScript will treat type annotations of Tensor dtype-specific subtypes as if they are normal Tensors. dtype constraints are not enforced in compilation either.
+      warnings.warn("TorchScript will treat type annotations of Tensor "
+    
+[NeMo W 2023-03-23 02:44:23 modules:96] apply_to_oov_word=None, This means that some of words will remain unchanged if they are not handled by any of the rules in self.parse_one_word(). This may be intended if phonemes and chars are both valid inputs, otherwise, you may see unexpected deletions in your input.
+[NeMo W 2023-03-23 02:44:23 modelPT:143] If you intend to do training or fine-tuning, please call the ModelPT.setup_training_data() method and provide a valid configuration file to setup the train data loader.
+    Train config : 
+    dataset:
+      _target_: nemo.collections.tts.torch.data.TTSDataset
+      manifest_filepath: /ws/LJSpeech/nvidia_ljspeech_train_clean_ngc.json
+      sample_rate: 22050
+      sup_data_path: /raid/LJSpeech/supplementary
+      sup_data_types:
+      - align_prior_matrix
+      - pitch
+      n_fft: 1024
+      win_length: 1024
+      hop_length: 256
+      window: hann
+      n_mels: 80
+      lowfreq: 0
+      highfreq: 8000
+      max_duration: null
+      min_duration: 0.1
+      ignore_file: null
+      trim: false
+      pitch_fmin: 65.40639132514966
+      pitch_fmax: 2093.004522404789
+      pitch_norm: true
+      pitch_mean: 212.35873413085938
+      pitch_std: 68.52806091308594
+      use_beta_binomial_interpolator: true
+    dataloader_params:
+      drop_last: false
+      shuffle: true
+      batch_size: 24
+      num_workers: 0
+    
+[NeMo W 2023-03-23 02:44:23 modelPT:150] If you intend to do validation, please call the ModelPT.setup_validation_data() or ModelPT.setup_multiple_validation_data() method and provide a valid configuration file to setup the validation data loader(s). 
+    Validation config : 
+    dataset:
+      _target_: nemo.collections.tts.torch.data.TTSDataset
+      manifest_filepath: /ws/LJSpeech/nvidia_ljspeech_val_clean_ngc.json
+      sample_rate: 22050
+      sup_data_path: /raid/LJSpeech/supplementary
+      sup_data_types:
+      - align_prior_matrix
+      - pitch
+      n_fft: 1024
+      win_length: 1024
+      hop_length: 256
+      window: hann
+      n_mels: 80
+      lowfreq: 0
+      highfreq: 8000
+      max_duration: null
+      min_duration: null
+      ignore_file: null
+      trim: false
+      pitch_fmin: 65.40639132514966
+      pitch_fmax: 2093.004522404789
+      pitch_norm: true
+      pitch_mean: 212.35873413085938
+      pitch_std: 68.52806091308594
+      use_beta_binomial_interpolator: true
+    dataloader_params:
+      drop_last: false
+      shuffle: false
+      batch_size: 24
+      num_workers: 0
+    
+[NeMo W 2023-03-23 09:44:36 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/pytorch_lightning/trainer/call.py:48: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+      rank_zero_warn("Detected KeyboardInterrupt, attempting graceful shutdown...")
+    

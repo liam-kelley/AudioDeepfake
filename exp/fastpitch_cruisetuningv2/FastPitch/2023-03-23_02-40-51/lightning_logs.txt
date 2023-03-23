@@ -1,0 +1,70 @@
+Using 16bit native Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name                | Type                              | Params
+--------------------------------------------------------------------------
+0 | mel_loss_fn         | MelLoss                           | 0     
+1 | pitch_loss_fn       | PitchLoss                         | 0     
+2 | duration_loss_fn    | DurationLoss                      | 0     
+3 | energy_loss_fn      | EnergyLoss                        | 0     
+4 | aligner             | AlignmentEncoder                  | 1.0 M 
+5 | forward_sum_loss_fn | ForwardSumLoss                    | 0     
+6 | bin_loss_fn         | BinLoss                           | 0     
+7 | preprocessor        | AudioToMelSpectrogramPreprocessor | 0     
+8 | fastpitch           | FastPitchModule                   | 45.8 M
+--------------------------------------------------------------------------
+45.8 M    Trainable params
+0         Non-trainable params
+45.8 M    Total params
+91.519    Total estimated model params size (MB)
+Epoch 4, global step 1135: 'val_loss' reached 1.14488 (best 1.14488), saving model to '/home/liam/AudioDeepfake/exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.1449-epoch=4.ckpt' as top 3
+Epoch 9, global step 2270: 'val_loss' reached 1.18732 (best 1.14488), saving model to '/home/liam/AudioDeepfake/exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.1873-epoch=9.ckpt' as top 3
+Epoch 14, global step 3405: 'val_loss' reached 1.23913 (best 1.14488), saving model to '/home/liam/AudioDeepfake/exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.2391-epoch=14.ckpt' as top 3
+Epoch 19, global step 4540: 'val_loss' was not in top 3
+Epoch 24, global step 5675: 'val_loss' was not in top 3
+Epoch 29, global step 6810: 'val_loss' reached 1.23907 (best 1.14488), saving model to '/home/liam/AudioDeepfake/exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.2391-epoch=29.ckpt' as top 3
+Epoch 34, global step 7945: 'val_loss' reached 1.18746 (best 1.14488), saving model to '/home/liam/AudioDeepfake/exp/fastpitch_cruisetuningv2/FastPitch/2023-03-23_02-40-51/checkpoints/FastPitch--val_loss=1.1875-epoch=34.ckpt' as top 3
+Epoch 39, global step 9080: 'val_loss' was not in top 3
+Epoch 44, global step 10215: 'val_loss' was not in top 3
+Epoch 49, global step 11350: 'val_loss' was not in top 3
+Epoch 54, global step 12485: 'val_loss' was not in top 3
+Epoch 59, global step 13620: 'val_loss' was not in top 3
+Epoch 64, global step 14755: 'val_loss' was not in top 3
+Epoch 69, global step 15890: 'val_loss' was not in top 3
+Epoch 74, global step 17025: 'val_loss' was not in top 3
+Epoch 79, global step 18160: 'val_loss' was not in top 3
+Epoch 84, global step 19295: 'val_loss' was not in top 3
+Epoch 89, global step 20430: 'val_loss' was not in top 3
+Epoch 94, global step 21565: 'val_loss' was not in top 3
+Epoch 99, global step 22700: 'val_loss' was not in top 3
+Epoch 104, global step 23835: 'val_loss' was not in top 3
+Epoch 109, global step 24970: 'val_loss' was not in top 3
+Epoch 114, global step 26105: 'val_loss' was not in top 3
+Epoch 119, global step 27240: 'val_loss' was not in top 3
+Epoch 124, global step 28375: 'val_loss' was not in top 3
+Epoch 129, global step 29510: 'val_loss' was not in top 3
+Epoch 134, global step 30645: 'val_loss' was not in top 3
+Epoch 139, global step 31780: 'val_loss' was not in top 3
+Epoch 144, global step 32915: 'val_loss' was not in top 3
+Epoch 149, global step 34050: 'val_loss' was not in top 3
+Epoch 154, global step 35185: 'val_loss' was not in top 3
+Epoch 159, global step 36320: 'val_loss' was not in top 3
+Epoch 164, global step 37455: 'val_loss' was not in top 3
+Epoch 169, global step 38590: 'val_loss' was not in top 3
+Epoch 174, global step 39725: 'val_loss' was not in top 3
+Epoch 179, global step 40860: 'val_loss' was not in top 3
+Epoch 184, global step 41995: 'val_loss' was not in top 3
+Epoch 189, global step 43130: 'val_loss' was not in top 3
+Epoch 194, global step 44265: 'val_loss' was not in top 3
+Epoch 199, global step 45400: 'val_loss' was not in top 3
+Epoch 204, global step 46535: 'val_loss' was not in top 3
+Epoch 209, global step 47670: 'val_loss' was not in top 3
+Epoch 214, global step 48805: 'val_loss' was not in top 3
+Epoch 219, global step 49940: 'val_loss' was not in top 3
+Epoch 224, global step 51075: 'val_loss' was not in top 3
+Epoch 229, global step 52210: 'val_loss' was not in top 3
+Epoch 234, global step 53345: 'val_loss' was not in top 3

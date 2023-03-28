@@ -20,14 +20,14 @@ python -m pip install pynini=2.1.4
 ```
 
 4. python fastpitch_cruisetuning.py
-5. python infer_some_cruise_audio.py
+5. python infer_some_cruise_audio.py (change flag to load hifigan from pretrained instead of from checkpoint)
 6. read your audio sample yeahh
 
-The following is to finetune the vocoder, and isn't tested yet.
+The following is to finetune the vocoder.
 
-7. python synthetize_mels_from_fastpitch_for_hifigan_cruisetuning.py (probably need to debug that code)
+7. python synthetize_mels_from_fastpitch_for_hifigan_cruisetuning.py
 8. python hifigan_cruisetuning.py
-9. modify infer_some_cruise_audio.py to load hifigan from checkpoint.
+9. infer_some_cruise_audio.py
 
 ### Plotting experiment losses
 

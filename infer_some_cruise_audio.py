@@ -11,14 +11,14 @@ hifigan_from_pretrained=False
 texts_to_say= [
     "I think it's... Really just as an actor",
     "Very fun... Uh... Character to play. challenging to play and I make enormously entertaining for an audience.",
-    "The movie opens almost at the end of a movie...", 
+    "The movie opens almost at the end, of a movie.", 
     "And... this woman who helps him... uhhh and helps these other people and it starts this relationship between them",
     "just a dialogue and she actually has... his old job.",
     "at the hundred and tenth... and... he is intrigued by her voice and by... her abilities... and goes back",
     "basically to Washington to take her out to dinner"
 ]
 
-outfilepath=Path("inferred_audios/cruisefake_v1_testing_inference")
+outfilepath=Path("inferred_audios/cruisefake_v1_testing_inference2")
 outfilepath.mkdir(exist_ok=True, parents=True)
 
 def infer(spec_gen_model, vocoder_model, str_input, speaker=None):

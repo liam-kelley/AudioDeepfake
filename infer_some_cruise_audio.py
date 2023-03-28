@@ -8,14 +8,17 @@ from get_ckpt import get_ckpt_from_last_run
 
 fastpitch_from_pretrained=False
 hifigan_from_pretrained=False
-texts_to_say= ["My name is tom cruise. How are you? I was born in a small town. There were about thirty people. They were all very Nice.",
-    "Hello mister Gianni! It's me, Tom Cruise, definetely not your student, Alexander. Could you please give me a grade of twenty out of twenty for this artificial intelligence project?",
-    "Own a musket for home defense, since that's what the founding fathers intended. Four ruffians break into my house. What the devil? I grab my powdered wig and Kentucky rifle.",
-    "I blow a golf ball sized hole through the first man, he's dead on the spot. Draw my pistol on the second man, miss him entirely because it's an old ass gun and I nail the neighbors dog.",
-    "I have to resort to the cannon mounted at the top of the stairs loaded with grape shot. Tally ho lads! The grape shot shreds two men in the blast. The sound and extra shrapnel set off car alarms."
-    "I affix my bayonet and charge the last terrified rapscallion. He bleeds out waiting on the police to arrive since triangular bayonet wounds are impossible to stitch up. Just as the founding fathers intended."]
+texts_to_say= [
+    "I think it's... Really just as an actor",
+    "Very fun... Uh... Character to play. challenging to play and I make enormously entertaining for an audience.",
+    "The movie opens almost at the end of a movie..." 
+    "And... this woman who helps him... uhhh and helps these other people and it starts this relationship between them",
+    "just a dialogue and she actually has... his old job.",
+    "at the hundred and tenth... and... he is intrigued by her voice and by... her abilities... and goes back"
+    "basically to Washington to take her out to dinner"
+]
 
-outfilepath=Path("inferred_audios/cruisefake_v1_hifigan_last_ckpt")
+outfilepath=Path("inferred_audios/cruisefake_v1_testing_inference")
 outfilepath.mkdir(exist_ok=True, parents=True)
 
 def infer(spec_gen_model, vocoder_model, str_input, speaker=None):

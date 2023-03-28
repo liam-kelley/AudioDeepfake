@@ -29,6 +29,11 @@ The following is to finetune the vocoder, and isn't tested yet.
 8. python hifigan_cruisetuning.py
 9. modify infer_some_cruise_audio.py to load hifigan from checkpoint.
 
+### Plotting experiment losses
+
+FastPitch: ```tensorboard --logdir=exp/fastpitch_cruisetuningv2```
+HiFiGAN: ```tensorboard --logdir=exp/hifigan_cruisetuningv1```
+
 ### The dataset
 
 The Dataset has 376 Tom Cruise Samples. Total length is a little over 20 minutes. The data is transcribed in the manifests folder. Here is info on how I made the dataset:

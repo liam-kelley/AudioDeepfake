@@ -1,0 +1,48 @@
+[NeMo W 2023-03-23 16:31:33 optimizers:55] Apex was not found. Using the lamb or fused_adam optimizer will error out.
+[NeMo W 2023-03-23 16:31:34 experimental:28] Module <class 'nemo.collections.common.tokenizers.text_to_speech.tts_tokenizers.IPATokenizer'> is experimental, not ready for production and is not fully supported. Use at your own risk.
+[NeMo W 2023-03-23 16:31:34 experimental:28] Module <class 'nemo.collections.tts.models.radtts.RadTTSModel'> is experimental, not ready for production and is not fully supported. Use at your own risk.
+[NeMo W 2023-03-23 16:31:34 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/hydra/_internal/hydra.py:127: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+    See https://hydra.cc/docs/next/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+      configure_logging=with_log_configuration,
+    
+[NeMo W 2023-03-23 16:31:36 exp_manager:989] The checkpoint callback was told to monitor a validation value and trainer's max_steps was set to 10000. Please ensure that max_steps will run for at least 5 epochs to ensure that checkpointing will not error out.
+[NeMo W 2023-03-23 16:31:36 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/torch/jit/annotations.py:309: UserWarning: TorchScript will treat type annotations of Tensor dtype-specific subtypes as if they are normal Tensors. dtype constraints are not enforced in compilation either.
+      warnings.warn("TorchScript will treat type annotations of Tensor "
+    
+[NeMo W 2023-03-23 16:31:40 modelPT:143] If you intend to do training or fine-tuning, please call the ModelPT.setup_training_data() method and provide a valid configuration file to setup the train data loader.
+    Train config : 
+    dataset:
+      _target_: nemo.collections.tts.data.datalayers.MelAudioDataset
+      manifest_filepath: /home/fkreuk/data/train_finetune.txt
+      min_duration: 0.75
+      n_segments: 8192
+    dataloader_params:
+      drop_last: false
+      shuffle: true
+      batch_size: 64
+      num_workers: 4
+    
+[NeMo W 2023-03-23 16:31:40 modelPT:150] If you intend to do validation, please call the ModelPT.setup_validation_data() or ModelPT.setup_multiple_validation_data() method and provide a valid configuration file to setup the validation data loader(s). 
+    Validation config : 
+    dataset:
+      _target_: nemo.collections.tts.data.datalayers.MelAudioDataset
+      manifest_filepath: /home/fkreuk/data/val_finetune.txt
+      min_duration: 3
+      n_segments: 66150
+    dataloader_params:
+      drop_last: false
+      shuffle: false
+      batch_size: 5
+      num_workers: 4
+    
+[NeMo W 2023-03-23 16:31:40 features:245] Using torch_stft is deprecated and has been removed. The values have been forcibly set to False for FilterbankFeatures and AudioToMelSpectrogramPreprocessor. Please set exact_pad to True as needed.
+[NeMo W 2023-03-23 16:31:40 features:245] Using torch_stft is deprecated and has been removed. The values have been forcibly set to False for FilterbankFeatures and AudioToMelSpectrogramPreprocessor. Please set exact_pad to True as needed.
+[NeMo W 2023-03-23 16:31:46 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/torch/functional.py:633: UserWarning: stft will soon require the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release. (Triggered internally at ../aten/src/ATen/native/SpectralOps.cpp:801.)
+      normalized, onesided, return_complex)
+    
+[NeMo W 2023-03-23 16:31:46 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/nemo/collections/tts/models/hifigan.py:297: UserWarning: istft will require a complex-valued input tensor in a future PyTorch release. Matching the output from stft with return_complex=True.  (Triggered internally at ../aten/src/ATen/native/SpectralOps.cpp:978.)
+      x = torch.istft(comp, n_fft=1024, hop_length=256, win_length=1024)
+    
+[NeMo W 2023-03-23 16:31:48 nemo_logging:349] /home/liam/myvenv/lib/python3.7/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:235: UserWarning: You called `self.log('global_step', ...)` in your `training_step` but the value needs to be floating point. Converting it to torch.float32.
+      f"You called `self.log({self.meta.name!r}, ...)` in your `{self.meta.fx}` but the value needs to"
+    

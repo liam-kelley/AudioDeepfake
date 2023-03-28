@@ -1,0 +1,70 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name                       | Type                     | Params
+------------------------------------------------------------------------
+0 | audio_to_melspec_precessor | FilterbankFeatures       | 0     
+1 | trg_melspec_fn             | FilterbankFeatures       | 0     
+2 | generator                  | Generator                | 13.9 M
+3 | mpd                        | MultiPeriodDiscriminator | 41.1 M
+4 | msd                        | MultiScaleDiscriminator  | 29.6 M
+5 | feature_loss               | FeatureMatchingLoss      | 0     
+6 | discriminator_loss         | DiscriminatorLoss        | 0     
+7 | generator_loss             | GeneratorLoss            | 0     
+------------------------------------------------------------------------
+84.7 M    Trainable params
+0         Non-trainable params
+84.7 M    Total params
+338.643   Total estimated model params size (MB)
+Epoch 4, global step 230: 'val_loss' reached 0.40713 (best 0.40713), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.4071-epoch=4.ckpt' as top 3
+Epoch 9, global step 460: 'val_loss' reached 0.39060 (best 0.39060), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3906-epoch=9.ckpt' as top 3
+Epoch 14, global step 690: 'val_loss' reached 0.36949 (best 0.36949), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3695-epoch=14.ckpt' as top 3
+Epoch 19, global step 920: 'val_loss' reached 0.36702 (best 0.36702), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3670-epoch=19.ckpt' as top 3
+Epoch 24, global step 1150: 'val_loss' reached 0.36294 (best 0.36294), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3629-epoch=24.ckpt' as top 3
+Epoch 29, global step 1380: 'val_loss' reached 0.35406 (best 0.35406), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3541-epoch=29.ckpt' as top 3
+Epoch 34, global step 1610: 'val_loss' reached 0.35430 (best 0.35406), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3543-epoch=34.ckpt' as top 3
+Epoch 39, global step 1840: 'val_loss' reached 0.35808 (best 0.35406), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3581-epoch=39.ckpt' as top 3
+Epoch 44, global step 2070: 'val_loss' reached 0.35210 (best 0.35210), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3521-epoch=44.ckpt' as top 3
+Epoch 49, global step 2300: 'val_loss' reached 0.34679 (best 0.34679), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3468-epoch=49.ckpt' as top 3
+Epoch 54, global step 2530: 'val_loss' reached 0.34833 (best 0.34679), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3483-epoch=54.ckpt' as top 3
+Epoch 59, global step 2760: 'val_loss' reached 0.34381 (best 0.34381), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3438-epoch=59.ckpt' as top 3
+Epoch 64, global step 2990: 'val_loss' was not in top 3
+Epoch 69, global step 3220: 'val_loss' reached 0.34207 (best 0.34207), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3421-epoch=69.ckpt' as top 3
+Epoch 74, global step 3450: 'val_loss' reached 0.34296 (best 0.34207), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3430-epoch=74.ckpt' as top 3
+Epoch 79, global step 3680: 'val_loss' was not in top 3
+Epoch 84, global step 3910: 'val_loss' reached 0.33983 (best 0.33983), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3398-epoch=84.ckpt' as top 3
+Epoch 89, global step 4140: 'val_loss' reached 0.34093 (best 0.33983), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3409-epoch=89.ckpt' as top 3
+Epoch 94, global step 4370: 'val_loss' was not in top 3
+Epoch 99, global step 4600: 'val_loss' reached 0.33538 (best 0.33538), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3354-epoch=99.ckpt' as top 3
+Epoch 104, global step 4830: 'val_loss' reached 0.33666 (best 0.33538), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3367-epoch=104.ckpt' as top 3
+Epoch 109, global step 5060: 'val_loss' was not in top 3
+Epoch 114, global step 5290: 'val_loss' was not in top 3
+Epoch 119, global step 5520: 'val_loss' reached 0.33879 (best 0.33538), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3388-epoch=119.ckpt' as top 3
+Epoch 124, global step 5750: 'val_loss' was not in top 3
+Epoch 129, global step 5980: 'val_loss' was not in top 3
+Epoch 134, global step 6210: 'val_loss' was not in top 3
+Epoch 139, global step 6440: 'val_loss' was not in top 3
+Epoch 144, global step 6670: 'val_loss' reached 0.33585 (best 0.33538), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3359-epoch=144.ckpt' as top 3
+Epoch 149, global step 6900: 'val_loss' was not in top 3
+Epoch 154, global step 7130: 'val_loss' reached 0.33582 (best 0.33538), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3358-epoch=154.ckpt' as top 3
+Epoch 159, global step 7360: 'val_loss' reached 0.33553 (best 0.33538), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3355-epoch=159.ckpt' as top 3
+Epoch 164, global step 7590: 'val_loss' reached 0.33350 (best 0.33350), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3335-epoch=164.ckpt' as top 3
+Epoch 169, global step 7820: 'val_loss' was not in top 3
+Epoch 174, global step 8050: 'val_loss' was not in top 3
+Epoch 179, global step 8280: 'val_loss' reached 0.32805 (best 0.32805), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3281-epoch=179.ckpt' as top 3
+Epoch 184, global step 8510: 'val_loss' was not in top 3
+Epoch 189, global step 8740: 'val_loss' was not in top 3
+Epoch 194, global step 8970: 'val_loss' reached 0.33301 (best 0.32805), saving model to '/home/liam/AudioDeepfake/exp/hifigan_cruisetuningv1/HifiGan/2023-03-23_16-31-36/checkpoints/HifiGan--val_loss=0.3330-epoch=194.ckpt' as top 3
+Epoch 199, global step 9200: 'val_loss' was not in top 3
+Epoch 204, global step 9430: 'val_loss' was not in top 3
+Epoch 209, global step 9660: 'val_loss' was not in top 3
+Epoch 214, global step 9890: 'val_loss' was not in top 3
+`Trainer.fit` stopped: `max_steps=10000` reached.
